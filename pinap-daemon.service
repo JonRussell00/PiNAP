@@ -1,0 +1,18 @@
+[Unit]
+Description=PiNAP LED and Fan Control Daemon
+After=multi-user.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/pinap-daemon.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Run with lower priority to minimize impact
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

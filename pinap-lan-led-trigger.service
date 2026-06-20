@@ -1,0 +1,14 @@
+[Unit]
+Description=PiNAP LAN LED trigger configuration
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'echo end0 > /sys/class/leds/network:activity/device_name'
+ExecStart=/bin/bash -c 'echo 1 > /sys/class/leds/network:activity/link'
+ExecStart=/bin/bash -c 'echo 1 > /sys/class/leds/network:activity/rx'
+ExecStart=/bin/bash -c 'echo 1 > /sys/class/leds/network:activity/tx'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

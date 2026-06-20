@@ -1,0 +1,79 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2712";
+    
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            leds {
+                compatible = "gpio-leds";
+
+                network_led {
+                    label = "network:activity";
+                    gpios = <&gpio 19 0>;  // GPIO 19, active high
+                    linux,default-trigger = "netdev";
+                    default-state = "off";
+                };
+  
+                disk1_led {
+                    label = "disk1:activity";
+                    gpios = <&gpio 22 1>;  // GPIO 22, active low
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+  
+                disk2_led {
+                    label = "disk2:activity";
+                    gpios = <&gpio 27 1>;  // GPIO 27, active low
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+  
+                disk3_led {
+                    label = "disk3:activity";
+                    gpios = <&gpio 4 1>;  // GPIO 4, active low
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+
+                disk4_led {
+                    label = "disk4:activity";
+                    gpios = <&gpio 17 1>;  // GPIO 17, active low
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+
+                statg_led {
+                    label = "statg:activity";
+                    gpios = <&gpio 20 0>;  // GPIO 20, active high
+                    linux,default-trigger = "heartbeat";
+                    default-state = "off";
+                };
+
+                statr_led {
+                    label = "statr:activity";
+                    gpios = <&gpio 21 0>;  // GPIO 21, active high
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+
+                esata_led {
+                    label = "esata:activity";
+                    gpios = <&gpio 16 0>;  // GPIO 16, active high
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+
+                usb_led {
+                    label = "usb:activity";
+                    gpios = <&gpio 26 0>;  // GPIO 26, active high
+                    linux,default-trigger = "none";
+                    default-state = "off";
+                };
+
+            };
+        };
+    };
+};
