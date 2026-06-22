@@ -38,20 +38,40 @@ To convert your QNAP to Raspberry Pi and Open Media Vault you will need the foll
 A more detailed explanation, instructions and pictures of the various modifications can be found in my blog: https://blog.mostlyrobots.net/
 
 # Raspberry Pi OS Installation
-Before installing the Raspberry Pi 5 in the PiNAP board you must boot the Pi independently, install the Raspberry Pi OS and make some changes to the `/boot/firmware/config.txt`
-
 Create a USB flash disk with the latest Raspberry Pi OS 64 bit **Lite image** using the Raspberry Pi Imager software. **Open Media Vault only works on the Lite version of the OS.**
 
-Boot the Pi 5 on its own and externally using a compatible 5v USB-C supply. If you try and power the Pi5 initially from the PiNAP convertor PCB it complains about lack of power as it can't measure the USB power. This needs to be disabled in the config.
+The Raspberry Pi 5 will not initially boot when installed in the PiNAP board because it cannot measure the power supply and refuses to boot from USB. You need to make a change to the `/boot/firmware/config.txt`. There are two options to achieve this:
 
-Edit the `/boot/firmware/config.txt` file. Add the following lines to the end of the file:
+## Option 1 - Boot the Pi5 initially with USB-C Power
+Before installing the Pi5 in the PiNAP board you can boot the Pi5 independently, install the Raspberry Pi OS and make some changes to the `/boot/firmware/config.txt`. Boot the Pi 5 from the USB flash disk with a compatible 5v USB-C supply and once it has booted, edit the `/boot/firmware/config.txt` file. Add the following lines to the end of the file:
 
     usb_max_current_enable=1
     dtparam=pciex1
     dtoverlay=pwm,pin=12,func=4
     dtoverlay=w1-gpio,gpiopin=14
 
-Once the Pi5 is booting from the USB flash disk, you have enabled ssh and have the settings in the config.txt, you can install it in the PiNAP convertor PCB and connectors it in the case.
+Save and shutdown.
+
+You can now install the Pi5 in the PiNAP convertor PCB and connect all the connectors in the case and continue the installation process.
+
+Connect the Pi 5 to the network and ensure everything is up to date:
+
+    sudo apt update
+    sudo apt upgrade
+
+Reboot the Pi 5
+
+## Option 2 - Edit the config.txt file on the USB flash disk before booting
+When you have created the USB flash disk with the latest Raspberry Pi OS 64 bit **Lite image** using the Raspberry Pi Imager software, insert the flash disk into a suitable laptop or computer. In the "bootfs" partition you should find the file /config.txt. Add the following lines to the end of the file:
+
+    usb_max_current_enable=1
+    dtparam=pciex1
+    dtoverlay=pwm,pin=12,func=4
+    dtoverlay=w1-gpio,gpiopin=14
+
+Save the file and eject the USB flash drive.
+
+You can now install the Pi5 in the PiNAP convertor PCB and connect all the connectors in the case and continue the installation process.
 
 Connect the Pi 5 to the network and ensure everything is up to date:
 
