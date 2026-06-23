@@ -229,9 +229,9 @@ All the features should now be functional:
 
 
 # ⚠️ Important Safety Notes
-- Always disconnect power before working with hardware
-- The SATA backplane modification requires precision soldering
-- Test all connections before closing the case
+- Always disconnect power before working with hardware.
+- The SATA backplane modification requires precision soldering. Ensure you know what you are doing to avoid damaging the Raspberry Pi.
+- Test all connections before closing the case.
 
 # Troubleshooting
 ## Common Issues
