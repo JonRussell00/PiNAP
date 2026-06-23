@@ -10,7 +10,7 @@ This repository contains the scripts required to support the Raspberry Pi 5 conv
 - [Configurable Options](#configurable-options)
 
 # Introduction
-This has currently only been tested on the QNAP TS-410 model, but it should work with other QNAPs of the same family, with the same motherboard, but with different number of drive bays. As people report success, I will update a "supported hardware" list.
+This has currently only been tested on the QNAP TS-410 and TS-412 models, but it should work with other QNAPs of the same family, with the same motherboard and same backplane connector, but with different number of drive bays. As people report success, I will update a "supported hardware" list.
 
 These instructions assume you have a working knowledge of the Raspberry Pi OS and Open Media Vault. For more detailed instructions on using those, please refer to the Internet.
 
@@ -31,7 +31,7 @@ To convert your QNAP to Raspberry Pi and Open Media Vault you will need the foll
     - 40 pin ribbon cable
     - 2 way power button cable
 - You will reuse your QNAP case, power supply and internal cables.
-- Hard disks.
+- You will need appropriate 3.5" or 2.5" hard disks.
 - You will also need a Dremel to cut out a hole in the back of the case and drill and 2mm drill bit to mount the power socket.
 - A soldering iron and steady hand to solder two tiny wires on the SATA backplane to enable the power on SATA3 and SATA4. These instructions assume you have already done this to modify your SATA backplane.
 
